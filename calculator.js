@@ -1,14 +1,28 @@
 const display = document.querySelector('.display > input');
 
-const numPad = document.querySelector('.numPad');
-numPad.addEventListener('click', (event) => {
-    let target = event.target;
+const numberKeys = document.querySelector('.numberKeys');
+numberKeys.addEventListener('click', (event) => {
+    const target = event.target;
     if(target.classList.contains('key')) {
-        //console.log(target.getAttribute('value'));
         if(parseInt(display.getAttribute('value')) === 0) {
-            display.setAttribute('value', target.getAttribute('value')) 
+            display.setAttribute('value', target.getAttribute('value'));
         } else {
-            display.setAttribute('value', display.getAttribute('value') + target.getAttribute('value'))
+            display.setAttribute('value', display.getAttribute('value') + target.getAttribute('value'));
         } 
+    }
+});
+
+const clearKeys = document.querySelector('.clearKeys');
+clearKeys.addEventListener('click', (event) => {
+    const target = event.target;
+    if(target.classList.contains('key')) {
+        switch(target.getAttribute('value')) {
+            case 'allClear':
+                display.setAttribute('value', 0);
+                break;
+            case 'clear' :
+                display.setAttribute('value', 0);
+                break;
+    }
     }
 });
