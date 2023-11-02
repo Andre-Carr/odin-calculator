@@ -8,32 +8,42 @@
   </head>
   <body>
     <div class="calculator">
-      <div class="display"></div>
+      <div class="display">
+        <input type="text" readonly value="0" />
+      </div>
       <div class="keyPad">
         <div class="numPad">
           <div class="clearKeys">
-            <div>AC</div>
-            <div>C</div>
+            <div class="key"><p>AC</p></div>
+            <div class="key"><p>C</p></div>
           </div>
           <div class="numberKeys">
-            <div>9</div>
-            <div>8</div>
-            <div>7</div>
-            <div>6</div>
-            <div>5</div>
-            <div>4</div>
-            <div>3</div>
-            <div>2</div>
-            <div>1</div>
-            <div id="zero">0</div>
+            <div class="numberKeys row">
+              <div class="key"><p>9</p></div>
+              <div class="key"><p>8</p></div>
+              <div class="key"><p>7</p></div>
+            </div>
+            <div class="numberKeys row">
+              <div class="key"><p>6</p></div>
+              <div class="key"><p>5</p></div>
+              <div class="key"><p>4</p></div>
+            </div>
+            <div class="numberKeys row">
+              <div class="key"><p>3</p></div>
+              <div class="key"><p>2</p></div>
+              <div class="key"><p>1</p></div>
+            </div>
+            <div class="numberKeys row">
+              <div class="key"><p>0</p></div>
+            </div>
           </div>
         </div>
         <div class="operationKeys">
-          <div>/</div>
-          <div>x</div>
-          <div>-</div>
-          <div>+</div>
-          <div>=</div>
+          <div class="key"><p>/</p></div>
+          <div class="key"><p>*</p></div>
+          <div class="key"><p>-</p></div>
+          <div class="key"><p>+</p></div>
+          <div class="key"><p>=</p></div>
         </div>
       </div>
     </div>

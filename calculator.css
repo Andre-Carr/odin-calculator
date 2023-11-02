@@ -1,6 +1,5 @@
-div {
+.calculator, .display, .key {
     border: 1px solid black;
-    text-align: center;
 }
 
 .calculator {
@@ -8,10 +7,22 @@ div {
     height: 360px;
     display: flex;
     flex-direction: column;
+    border-collapse: collapse;
 }
 
 .display {
     flex: 1 1 0%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.display > input {
+    height: 100%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: right;
+    padding-right: 10px;
+    font-size: 36px;
 }
 
 .keyPad {
@@ -34,28 +45,45 @@ div {
 
 .clearKeys > div {
     flex: 1 1 0%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .numberKeys {
     flex: 4 1 0%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.numberKeys .row {
+    display: flex;
     flex-direction: row-reverse;
 }
 
-.numberKeys > div {
-    width: 32%;
-}
-.numberKeys > div#zero {
-    width: 99%;
+.numberKeys .row > div {
+    flex: 1 1 0%;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .operationKeys {
     flex: 1 1 0%;
     display: flex;
     flex-direction: column;
+    background-color: orange;
 }
 
 .operationKeys > div {
     flex: 1 1 0%;
+}
+
+.key {
+    text-align: center;
+}
+
+.key > p {
+    vertical-align: middle;
+}
+
+p, input {
+    color: white;
+    text-shadow: 1px 1px black;
 }
