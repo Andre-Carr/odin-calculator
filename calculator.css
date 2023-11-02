@@ -43,7 +43,7 @@
     flex-wrap: wrap;
 }
 
-.clearKeys > div {
+.clearKeys > .key {
     flex: 1 1 0%;
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -59,7 +59,7 @@
     flex-direction: row-reverse;
 }
 
-.numberKeys .row > div {
+.numberKeys .row > .key {
     flex: 1 1 0%;
     background-color: rgba(0, 0, 0, 0.3);
 }
@@ -71,19 +71,24 @@
     background-color: orange;
 }
 
-.operationKeys > div {
+.operationKeys > .key {
     flex: 1 1 0%;
 }
 
 .key {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/*
 .key > p {
     vertical-align: middle;
 }
+*/
 
-p, input {
+.key, input {
     color: white;
     text-shadow: 1px 1px black;
 }
