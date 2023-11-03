@@ -5,46 +5,6 @@ const keyPad = document.querySelector(".keyPad");
 keyPad.addEventListener("click", (event) => {
   const target = event.target;
   if (target.classList.contains("key")) {
-    /*
-    target.classList.forEach((keyClass) => {
-      switch (keyClass) {
-        case "clearKey":
-          inputClear(target.getAttribute("value"));
-          break;
-        case "numberKey":
-          if (expressionDisplay.getAttribute("value").includes("=")) {
-            clearExpression();
-            clearInput();
-          }
-          if (
-            !(
-              target.getAttribute("value") === "." &&
-              inputDisplay.getAttribute("value").includes(".")
-            )
-          ) {
-            inputNumber(target.getAttribute("value"));
-          }
-          break;
-        case "operationKey":
-          if (isValidInput()) {
-            if (isExprEmpty()) {
-              inputOperation(target.getAttribute("value"));
-            } else {
-              const expression = expressionDisplay
-                .getAttribute("value")
-                .split(" ");
-              operate(
-                expression[1],
-                parseFloat(expression[0]),
-                parseFloat(inputDisplay.getAttribute("value"))
-              );
-              inputOperation(target.getAttribute("value"));
-            }
-          }
-          break;
-      }
-    });
-    */
     input(target.getAttribute('value'));
   }
 });
