@@ -15,7 +15,6 @@ keyPad.addEventListener('click', (event) => {
                     inputNumber(target.getAttribute('value'));
                     break;
                 case 'operationKey':
-                    if(parseFloat(inputDisplay.getAttribute('value')) === 0) break;
                     if(isExprEmpty()) {
                         inputOperation(target.getAttribute('value'));
                     } else {
@@ -61,7 +60,7 @@ const clearExpression = function clearExpressionDisplay() {
 const inputOperation = function inputOperationKey (keyValue) {
     if(keyValue === '=') {
         inputExpression('', keyValue);
-    } else {
+    } else if(parseFloat(inputDisplay.getAttribute('value')) !== 0) {
         inputExpression(inputDisplay.getAttribute('value'), keyValue);
         clearInput();
     }
