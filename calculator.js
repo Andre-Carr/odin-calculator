@@ -5,6 +5,7 @@ const keyPad = document.querySelector(".keyPad");
 keyPad.addEventListener("click", (event) => {
   const target = event.target;
   if (target.classList.contains("key")) {
+    /*
     target.classList.forEach((keyClass) => {
       switch (keyClass) {
         case "clearKey":
@@ -43,8 +44,64 @@ keyPad.addEventListener("click", (event) => {
           break;
       }
     });
+    */
+    input(target.getAttribute('value'));
   }
 });
+
+const input = function inputKeyValue(keyValue) {
+  switch(keyValue) {
+    case 'clear':
+    case 'allClear':
+      inputClear(keyValue);
+      break;
+    case '/':
+    case '*':
+    case '-':
+    case '+':
+    case '=':
+      if (isValidInput()) {
+        if (isExprEmpty()) {
+          inputOperation(keyValue);
+        } else {
+          const expression = expressionDisplay
+            .getAttribute("value")
+            .split(" ");
+          operate(
+            expression[1],
+            parseFloat(expression[0]),
+            parseFloat(inputDisplay.getAttribute("value"))
+          );
+          inputOperation(keyValue);
+        }
+      }
+      break;
+    case '0':
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
+    case '.':
+      if (expressionDisplay.getAttribute("value").includes("=")) {
+        clearExpression();
+        clearInput();
+      }
+      if (
+        !(
+          keyValue === "." &&
+          inputDisplay.getAttribute("value").includes(".")
+        )
+      ) {
+        inputNumber(keyValue);
+      }
+      break;
+  }
+}
 
 const inputNumber = function inputNumberKey(keyValue) {
   if (parseInt(inputDisplay.getAttribute("value")) === 0) {
