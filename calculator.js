@@ -12,15 +12,25 @@ keyPad.addEventListener('click', (event) => {
                     inputClear(target.getAttribute('value'));
                     break;
                 case 'numberKey':
-                    inputNumber(target.getAttribute('value'));
+                    if(expressionDisplay.getAttribute('value').includes('=')) {
+                        clearExpression();
+                        clearInput();
+                    }
+                    if( 
+                        !(target.getAttribute('value') === '.' && inputDisplay.getAttribute('value').includes('.'))
+                    ) {
+                        inputNumber(target.getAttribute('value'));
+                    }
                     break;
                 case 'operationKey':
-                    if(isExprEmpty()) {
-                        inputOperation(target.getAttribute('value'));
-                    } else {
-                        const expression = expressionDisplay.getAttribute('value').split(' ');
-                        operate(expression[1], parseFloat(expression[0]), parseFloat(inputDisplay.getAttribute('value')));
-                        inputOperation(target.getAttribute('value'));
+                    if(isValidInput()) {
+                        if(isExprEmpty()) {
+                            inputOperation(target.getAttribute('value'));
+                        } else {
+                            const expression = expressionDisplay.getAttribute('value').split(' ');
+                            operate(expression[1], parseFloat(expression[0]), parseFloat(inputDisplay.getAttribute('value')));
+                            inputOperation(target.getAttribute('value'));
+                        }
                     }
                     break;
             }
@@ -98,3 +108,9 @@ const subtract = function subtraction(a, b) {return a - b};
 const add = function addition(a, b) {return a + b;}
 
 const isExprEmpty = function isExpressionDisplayEmpty() {return expressionDisplay.getAttribute('value') === '';}
+
+const isValidInput = function isValidInputDisplay() {
+    let isValid = true;
+    if(inputDisplay.getAttribute('value') === '.') isValid = false;
+    return isValid;
+}
