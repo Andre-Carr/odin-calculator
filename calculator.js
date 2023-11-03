@@ -89,7 +89,7 @@ const inputExpression = function inputExpressionDisplay(number, operator) {
     expressionDisplay.setAttribute('value', `${number} ${operator}`);
 }
 
-const divide = function division(a, b) {return a / b;}
+const divide = function division(a, b) {return (b !== 0) ? a / b : "Cannot divide by zero";}
 
 const multiply = function multiplication(a, b) {return a * b;}
 
