@@ -9,10 +9,18 @@ keyPad.addEventListener("click", (event) => {
   }
 });
 
+window.addEventListener('keydown', (event) => {
+  let key = event.key;
+  if(key === 'Backspace') key = 'clear';
+  if(key === 'Enter') key = '=';
+  input(key);
+});
+
 const input = function inputKeyValue(keyValue) {
   switch(keyValue) {
     case 'clear':
     case 'allClear':
+    case 'Backspace':
       inputClear(keyValue);
       break;
     case '/':
