@@ -1,7 +1,6 @@
 const inputDisplay = document.querySelector(".inputDisplay");
 const expressionDisplay = document.querySelector(".expressionDisplay");
 
-let isOutput = true;
 const keyPad = document.querySelector(".keyPad");
 keyPad.addEventListener("click", (event) => {
   const target = event.target;
@@ -56,7 +55,6 @@ const inputNumber = function inputNumberKey(keyValue) {
       inputDisplay.getAttribute("value") + keyValue
     );
   }
-  isOutput = false;
 };
 
 const inputClear = function inputClearKey(keyValue) {
@@ -119,7 +117,6 @@ const operate = function inputOperationKey(operator, numberOne, numberTwo) {
       );
       break;
   }
-  isOutput = true;
 };
 
 const inputExpression = function inputExpressionDisplay(number, operator) {
