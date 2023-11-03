@@ -68,6 +68,8 @@ const input = function inputKeyValue(keyValue) {
         inputNumber(keyValue);
       }
       break;
+      case 'sign':
+        inputDisplay.setAttribute('value', sign(inputDisplay.getAttribute('value')));
   }
 }
 
@@ -163,6 +165,10 @@ const subtract = function subtraction(a, b) {
 const add = function addition(a, b) {
   return a + b;
 };
+
+const sign = function reverseInputSign(a) {
+  return a * -1;
+}
 
 const isExprEmpty = function isExpressionDisplayEmpty() {
   return expressionDisplay.getAttribute("value") === "";
