@@ -1,4 +1,5 @@
-const display = document.querySelector('.display > input');
+const inputDisplay = document.querySelector('.inputDisplay');
+const expressionDisplay = document.querySelector('.expressionDisplay');
 
 /*
 const numberKeys = document.querySelector('.numberKeys');
@@ -36,10 +37,9 @@ keyPad.addEventListener('click', (event) => {
         target.classList.forEach((keyClass) => {
             switch(keyClass) {
                 case 'clearKey':
-                    console.log('clearKey');
+                    clear(target);
                     break;
                 case 'numberKey':
-                    console.log('numberKey');
                     input(target);
                     break;
                 case 'operationKey':
@@ -51,9 +51,29 @@ keyPad.addEventListener('click', (event) => {
 });
 
 const input = function inputNumberKey(key) {
-    if(parseInt(display.getAttribute('value')) === 0) {
-        display.setAttribute('value', key.getAttribute('value'));
+    if(parseInt(inputDisplay.getAttribute('value')) === 0) {
+        inputDisplay.setAttribute('value', key.getAttribute('value'));
     } else {
-        display.setAttribute('value', display.getAttribute('value') + key.getAttribute('value'));
+        inputDisplay.setAttribute('value', inputDisplay.getAttribute('value') + key.getAttribute('value'));
     } 
+}
+
+const clear = function inputClearKey(key) {
+    switch(key.getAttribute('value')) {
+        case 'clear':
+            clearInput();
+            break;
+        case 'allClear':
+            clearInput();
+            clearExpression();
+            break;
+    }
+}
+
+const clearInput = function inputInputDisplay() {
+    inputDisplay.setAttribute('value', 0);
+}
+
+const clearExpression = function clearExpressionDisplay() {
+    inputDisplay.setAttribute('value', '');
 }
