@@ -22,7 +22,15 @@
     background-color: rgba(0, 0, 0, 0.7);
     text-align: right;
     padding-right: 10px;
-    font-size: 36px;
+    
+}
+
+.inputDisplay {
+    font-size: 48px;
+}
+
+.expressionDisplay {
+    font-size: 26px;
 }
 
 .keyPad {
@@ -80,13 +88,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 32px;
 }
-
-/*
-.key > p {
-    vertical-align: middle;
-}
-*/
 
 .key, input {
     color: white;
