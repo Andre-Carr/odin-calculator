@@ -72,10 +72,6 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-#zero {
-    flex: 2 1 0%;
-}
-
 .operationKeys {
     flex: 1 1 0%;
     display: flex;
