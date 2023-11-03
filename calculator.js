@@ -15,6 +15,7 @@ keyPad.addEventListener('click', (event) => {
                     inputNumber(target.getAttribute('value'));
                     break;
                 case 'operationKey':
+                    if(parseFloat(inputDisplay.getAttribute('value')) === 0) break;
                     if(isExprEmpty()) {
                         inputOperation(target.getAttribute('value'));
                     } else {
