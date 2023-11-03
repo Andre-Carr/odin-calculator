@@ -1,35 +1,7 @@
 const inputDisplay = document.querySelector('.inputDisplay');
 const expressionDisplay = document.querySelector('.expressionDisplay');
 
-/*
-const numberKeys = document.querySelector('.numberKeys');
-numberKeys.addEventListener('click', (event) => {
-    const target = event.target;
-    if(target.classList.contains('key')) {
-        if(parseInt(display.getAttribute('value')) === 0) {
-            display.setAttribute('value', target.getAttribute('value'));
-        } else {
-            display.setAttribute('value', display.getAttribute('value') + target.getAttribute('value'));
-        } 
-    }
-});
-
-const clearKeys = document.querySelector('.clearKeys');
-clearKeys.addEventListener('click', (event) => {
-    const target = event.target;
-    if(target.classList.contains('key')) {
-        switch(target.getAttribute('value')) {
-            case 'allClear':
-                display.setAttribute('value', 0);
-                break;
-            case 'clear' :
-                display.setAttribute('value', 0);
-                break;
-    }
-    }
-});
-*/
-
+let isOutput = true;
 const keyPad = document.querySelector('.keyPad');
 keyPad.addEventListener('click', (event) => {
     const target = event.target;
@@ -37,29 +9,36 @@ keyPad.addEventListener('click', (event) => {
         target.classList.forEach((keyClass) => {
             switch(keyClass) {
                 case 'clearKey':
-                    clear(target);
+                    inputClear(target.getAttribute('value'));
                     break;
                 case 'numberKey':
-                    input(target);
+                    inputNumber(target.getAttribute('value'));
                     break;
                 case 'operationKey':
-                    console.log('operationKey');
+                    if(isExprEmpty()) {
+                        inputOperation(target.getAttribute('value'));
+                    } else {
+                        const expression = expressionDisplay.getAttribute('value').split(' ');
+                        operate(expression[1], parseFloat(expression[0]), parseFloat(inputDisplay.getAttribute('value')));
+                        inputOperation(target.getAttribute('value'));
+                    }
                     break;
             }
         });
     }
 });
 
-const input = function inputNumberKey(key) {
+const inputNumber = function inputNumberKey(keyValue) {
     if(parseInt(inputDisplay.getAttribute('value')) === 0) {
-        inputDisplay.setAttribute('value', key.getAttribute('value'));
+        inputDisplay.setAttribute('value', keyValue);
     } else {
-        inputDisplay.setAttribute('value', inputDisplay.getAttribute('value') + key.getAttribute('value'));
+        inputDisplay.setAttribute('value', inputDisplay.getAttribute('value') + keyValue);
     } 
+    isOutput = false;
 }
 
-const clear = function inputClearKey(key) {
-    switch(key.getAttribute('value')) {
+const inputClear = function inputClearKey(keyValue) {
+    switch(keyValue) {
         case 'clear':
             clearInput();
             break;
@@ -75,5 +54,47 @@ const clearInput = function inputInputDisplay() {
 }
 
 const clearExpression = function clearExpressionDisplay() {
-    inputDisplay.setAttribute('value', '');
+    expressionDisplay.setAttribute('value', '');
 }
+
+const inputOperation = function inputOperationKey (keyValue) {
+    if(keyValue === '=') {
+        inputExpression('', keyValue);
+    } else {
+        inputExpression(inputDisplay.getAttribute('value'), keyValue);
+        clearInput();
+    }
+    
+}
+
+const operate = function inputOperationKey(operator, numberOne, numberTwo) {
+    switch(operator) {
+        case '/':
+            inputDisplay.setAttribute('value', divide(numberOne, numberTwo));
+            break;
+        case '*':
+            inputDisplay.setAttribute('value', multiply(numberOne, numberTwo));
+            break;
+        case '-':
+            inputDisplay.setAttribute('value', subtract(numberOne, numberTwo));
+            break;
+        case '+':
+            inputDisplay.setAttribute('value', add(numberOne, numberTwo));
+            break;
+    }
+    isOutput = true;
+}
+
+const inputExpression = function inputExpressionDisplay(number, operator) {
+    expressionDisplay.setAttribute('value', `${number} ${operator}`);
+}
+
+const divide = function division(a, b) {return a / b;}
+
+const multiply = function multiplication(a, b) {return a * b;}
+
+const subtract = function subtraction(a, b) {return a - b};
+
+const add = function addition(a, b) {return a + b;}
+
+const isExprEmpty = function isExpressionDisplayEmpty() {return expressionDisplay.getAttribute('value') === '';}
