@@ -70,16 +70,16 @@ const inputOperation = function inputOperationKey (keyValue) {
 const operate = function inputOperationKey(operator, numberOne, numberTwo) {
     switch(operator) {
         case '/':
-            inputDisplay.setAttribute('value', divide(numberOne, numberTwo));
+            inputDisplay.setAttribute('value', Number(divide(numberOne, numberTwo).toFixed(3)));
             break;
         case '*':
-            inputDisplay.setAttribute('value', multiply(numberOne, numberTwo));
+            inputDisplay.setAttribute('value',  Number(multiply(numberOne, numberTwo).toFixed(3)));
             break;
         case '-':
-            inputDisplay.setAttribute('value', subtract(numberOne, numberTwo));
+            inputDisplay.setAttribute('value',  Number(subtract(numberOne, numberTwo).toFixed(3)));
             break;
         case '+':
-            inputDisplay.setAttribute('value', add(numberOne, numberTwo));
+            inputDisplay.setAttribute('value',  Number(add(numberOne, numberTwo).toFixed(3)));
             break;
     }
     isOutput = true;
