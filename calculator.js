@@ -79,6 +79,10 @@ const inputOperation = function inputOperationKey (keyValue) {
 
 const operate = function inputOperationKey(operator, numberOne, numberTwo) {
     switch(operator) {
+        /*
+         * toFixed always displays the output in a fixed amount of precision
+         * so the output is recast into a Number to remove any right trailing zeros
+         */
         case '/':
             inputDisplay.setAttribute('value', Number(divide(numberOne, numberTwo).toFixed(3)));
             break;
