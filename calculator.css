@@ -13,7 +13,7 @@
 .display {
     flex: 1 1 0%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 .display > input {
